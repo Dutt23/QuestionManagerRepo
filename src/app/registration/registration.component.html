@@ -1,0 +1,176 @@
+<mat-accordion>
+
+    <mat-expansion-panel>
+
+        <mat-expansion-panel-header>
+
+            <mat-panel-title>
+                Game Topic card
+
+            </mat-panel-title>
+
+        </mat-expansion-panel-header>
+
+
+
+
+        <mat-radio-button class="example-radio-button" value="SinglePlayer" #gameMode1 (click)="nextStep(gameMode1.value) ; openDialog()">
+            SinglePlayer
+        </mat-radio-button>
+
+        <mat-radio-button class="example-radio-button" value="Multiplayer" #gameMode2 (click)="nextStep(gameMode2.value);openMultiDialog()">
+            Multiplayer
+        </mat-radio-button>
+
+
+
+
+
+
+
+    </mat-expansion-panel>
+</mat-accordion>
+
+
+
+
+
+
+
+
+
+
+<mat-accordion>
+
+    <mat-expansion-panel *ngFor="let category of categories">
+
+
+        <mat-expansion-panel-header>
+
+            <mat-panel-title>
+                
+                Category :  {{category}}
+
+            </mat-panel-title>
+
+        </mat-expansion-panel-header>
+
+        <mat-accordion>
+
+            <mat-expansion-panel *ngFor="let topic of topics">
+
+                <mat-expansion-panel-header>
+
+                    <mat-panel-title>
+                       Topic : {{topic}}
+
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+
+
+
+                <div class="example-container">
+                    Category : {{category}} 
+                    Topic : {{topic}}
+                    <br>
+                    <mat-form-field>
+
+                        <input matInput placeholder="Topic Name" #topicName required>
+                    </mat-form-field>
+
+
+
+                    <mat-form-field>
+                        <mat-select placeholder="Select">
+                            <mat-option value="option" #gameType>SinglePlayer</mat-option>
+                            <mat-option value="option" #gameType>Multiplayer</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <textarea matInput placeholder="Game Description " matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" #gameDescription
+                            required></textarea>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput type="number" placeholder="Number of Questions " #totalNumberOfQuestions required>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-select placeholder="Difficulty Level">
+                            <mat-option value="option" #questionDifficulty>Easy</mat-option>
+                            <mat-option value="option" #questionDifficulty>Medium</mat-option>
+                            <mat-option value="option" #questionDifficulty>Hard</mat-option>
+
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput type="number" placeholder="Number of Players " #numberOfPlayers required>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput type="number" placeholder="Total Score" #totalScore required>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <textarea matInput placeholder="Set of Rules" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" #gameRules
+                            required></textarea>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Time per question" #timePerQuestion required>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Duration of the Game" #gameDuration required>
+                    </mat-form-field>
+                    <a routerLink="/login">
+                        <button mat-raised-button color="primary" style="align-content: center" (click)="add(topicName.value, gameType.value, gameDescription.value, totalNumOfQuestions.value, questionDifficulty.value, gameDuration.value, timePerQuestion.value, numberOfPlayers.value, setOfRules.value);gameId.value=''; categoryName.value=''; topicName.value=''; gameType.value=''; gameDescription.value=''; totalNumOfQuestions.value=''; levelOfQuestion.value=''; gameDuration.value=''; timePerQuestion.value=''; numberOfPlayers.value=''; setOfRules.value='';">Add</button>
+                    </a>
+
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+        <mat-accordion>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Add topic
+                        </mat-panel-title>
+            
+                    </mat-expansion-panel-header>
+            
+                    <mat-form-field>
+                        <input matInput placeholder="Topic Name" #categoryName>
+                    </mat-form-field>
+            
+                    <mat-form-field>
+                        <input matInput type="number" placeholder="Topic Id" #categoryId>
+                    </mat-form-field>
+                    <button mat-raised-button color="primary">
+                        Add
+                    </button>
+                </mat-expansion-panel>
+            </mat-accordion>
+
+    </mat-expansion-panel>
+
+</mat-accordion>
+
+<mat-accordion>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Add category
+            </mat-panel-title>
+
+        </mat-expansion-panel-header>
+
+        <mat-form-field>
+            <input matInput placeholder="Category Name" #categoryName>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="number" placeholder="Category Id" #categoryId>
+        </mat-form-field>
+        <button mat-raised-button color="primary">
+            Add
+        </button>
+    </mat-expansion-panel>
+</mat-accordion>
+<app-footer></app-footer>
